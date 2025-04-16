@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Role Finder Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="start-screen" class="screen active">
+            <h1>Find Your Valorant Role</h1>
+            <p>Answer 13 questions to discover which role and agent best suit your playstyle!</p>
+            <button id="start-btn" class="btn">Start Quiz</button>
+        </div>
+
+        <div id="question-screen" class="screen">
+            <div id="progress-container">
+                <div id="progress-bar">
+                     <div id="progress-bar-inner"></div>
+                </div>
+                <span id="progress-text">Question 1 / 13</span>
+            </div>
+            <img id="question-image" src="images/q1.jpg" alt="Question visual cue">
+            <h2 id="question-text">Question placeholder</h2>
+            <div id="answer-buttons" class="btn-grid">
+                <!-- Answer buttons will be generated here -->
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <h2>Your Result:</h2>
+            <div id="result-content">
+                 <img id="result-role-icon" src="" alt="Role Icon">
+                 <h3 id="result-role">Role Placeholder</h3>
+                 <p id="result-role-desc">Role description placeholder.</p>
+                 <hr>
+                 <h4>Recommended Agent:</h4>
+                 <img id="result-agent-img" src="" alt="Agent Portrait">
+                 <strong id="result-agent-name">Agent Placeholder</strong>
+            </div>
+             <div class="result-buttons">
+                 <button id="share-btn" class="btn btn-secondary">Download Result</button>
+                 <button id="restart-btn" class="btn">Restart Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden canvas for generating the share image -->
+    <canvas id="result-canvas" style="display: none;"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

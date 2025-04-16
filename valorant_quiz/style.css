@@ -1,0 +1,230 @@
+:root {
+    --primary-color: #FF4655; /* Valorant Red */
+    --secondary-color: #111; /* Dark Background */
+    --text-color: #ECE8E1; /* Off-white text */
+    --light-bg: #222; /* Slightly lighter dark */
+    --border-color: #444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.quiz-container {
+    background-color: var(--light-bg);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    overflow: hidden; /* Ensures content doesn't spill during transitions */
+}
+
+.screen {
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3, h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 20px 0;
+}
+
+#start-screen p {
+     font-size: 1.1em;
+     margin-bottom: 30px;
+}
+
+/* Progress Bar */
+#progress-container {
+    margin-bottom: 25px;
+    text-align: right;
+    color: #aaa;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+#progress-bar-inner {
+    height: 100%;
+    width: 0%; /* Starts at 0 */
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+}
+
+#progress-text {
+     font-size: 0.9em;
+}
+
+
+/* Question Screen */
+#question-image {
+    max-width: 80%;
+    height: auto;
+    max-height: 250px; /* Limit image height */
+    object-fit: cover; /* Crop if needed */
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 2px solid var(--border-color);
+}
+
+#question-text {
+    font-size: 1.4em;
+    margin-bottom: 30px;
+    min-height: 60px; /* Prevent layout jump */
+}
+
+/* Buttons */
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: center;
+    width: 100%; /* Make buttons fill grid columns */
+}
+
+.btn:hover {
+    background-color: #d43a46; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+
+.btn:active {
+     transform: translateY(0px);
+}
+
+
+.btn.btn-secondary {
+    background-color: #555;
+}
+.btn.btn-secondary:hover {
+     background-color: #777;
+}
+
+
+#answer-buttons .btn {
+     background-color: #333; /* Different background for answer buttons */
+     text-align: left; /* Align text left for readability */
+     font-weight: normal;
+}
+
+#answer-buttons .btn:hover {
+     background-color: #444;
+}
+
+/* Result Screen */
+#result-content {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+}
+
+#result-role-icon, #result-agent-img {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#result-agent-name {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    display: block; /* Make sure it takes its own line */
+    margin-top: 5px;
+}
+
+#result-role-desc {
+     font-style: italic;
+     color: #ccc;
+     margin-bottom: 15px;
+}
+
+.result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.result-buttons .btn {
+     min-width: 150px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .quiz-container {
+        padding: 20px;
+    }
+
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+    #question-text { font-size: 1.2em; }
+
+    .btn-grid {
+        grid-template-columns: 1fr; /* Stack buttons on small screens */
+    }
+
+    #question-image {
+         max-width: 95%;
+         max-height: 200px;
+    }
+
+    .result-buttons .btn {
+        width: 100%; /* Full width buttons */
+    }
+}
